@@ -41,15 +41,10 @@ const App = () => {
       <Header course={course} />
       <Content part={part1} />
       <Total exercises={exercises1} />
-      <p>
-        {part1} {exercises1}
-      </p>
-      <p>
-        {part2} {exercises2}
-      </p>
-      <p>
-        {part3} {exercises3}
-      </p>
+      <Content part={part2} />
+      <Total exercises={exercises2} />
+      <Content part={part3} />
+      <Total exercises={exercises3} />      
       <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
     </>
   )
