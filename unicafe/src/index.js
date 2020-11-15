@@ -1,19 +1,38 @@
+import React, { useState } from 'react'
+import ReactDOM from 'react-dom'
+
+const Display = props => <div> {props.text} {props.value} </div>
+
+const Button = (props) => (
+  <button onClick={props.handleClick}>
+    {props.text}
+  </button>
+)
+ 
 const App = () => {
-  const [left, setLeft] = useState(0)
-  const [right, setRight] = useState(0)
+  // tallenna napit omaan tilaansa
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
+
+  const setToGood = newValue => setGood(newValue)
+  const setToNeutral = newValue => setNeutral(newValue) 
+  const setToBad = newValue => setBad(newValue) 
 
   return (
     <div>
-      <div>
-        {left}
-        <button onClick={() => setLeft(left + 1)}>
-          left
-        </button>
-        <button onClick={() => setRight(right + 1)}>
-          right
-        </button>
-        {right}
-      </div>
+      <h1>Give feedback</h1>
+      <Button handleClick={() => setToGood(good + 1)} text="good" />
+      <Button handleClick={() => setToNeutral(neutral + 1)} text="neutral" />
+      <Button handleClick={() => setToBad(bad + 1)} text="bad" />
+      <h1>Statistics</h1>
+      <Display text={"good"} value={good} />
+      <Display text={"neutral"} value={neutral} />
+      <Display text={"bad"} value={bad} />
     </div>
   )
 }
+
+ReactDOM.render(<App />, 
+  document.getElementById('root')
+)
