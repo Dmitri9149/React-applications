@@ -9,13 +9,23 @@ const Button = (props) => (
   </button>
 )
 
-const Statistics = ({good, neutral, bad}) => (
-  <div>
-    <Display text={"all"} value={good+bad+neutral} />
-    <Display text={"average"} value={(good-bad)/(good+bad+neutral)} />
-    <Display text={"positive"} value={(good)/(good+bad+neutral)*100 + "%"} />    
-  </div>
-)
+const Statistics = ({good, neutral, bad}) => {
+  if ((good+bad-neutral) !== 0) {
+    return (
+      <div>
+        <Display text={"all"} value={good+bad+neutral} />
+        <Display text={"average"} value={(good-bad)/(good+bad+neutral)} />
+        <Display text={"positive"} value={(good)/(good+bad+neutral)*100 + "%"} />    
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      No feedback yet
+    </div>
+  )
+}
  
 const App = () => {
   // tallenna napit omaan tilaansa
@@ -37,9 +47,6 @@ const App = () => {
       <Display text={"good"} value={good} />
       <Display text={"neutral"} value={neutral} />
       <Display text={"bad"} value={bad} />
-      <Display text={"all"} value={good+bad+neutral} />
-      <Display text={"average"} value={(good-bad)/(good+bad+neutral)} />
-      <Display text={"positive"} value={(good)/(good+bad+neutral)*100 + "%"} />
       <Statistics good = {good} bad = {bad} neutral ={neutral} />
     </div>
   )
