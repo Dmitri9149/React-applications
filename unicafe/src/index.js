@@ -9,7 +9,7 @@ const Button = (props) => (
   </button>
 )
 
-const Statistics = ({good, neutral, bad}) => {
+const Statistics = ({good,neutral,bad}) => {
   const val1 = (good+bad+neutral)
   const val2 = ((good-bad)/(good+bad+neutral)).toFixed(2)
   const val3 = ((good)/(good+bad+neutral)*100).toFixed(2) + "%"
