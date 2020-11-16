@@ -10,12 +10,15 @@ const Button = (props) => (
 )
 
 const Statistics = ({good, neutral, bad}) => {
-  if ((good+bad-neutral) !== 0) {
+  const val1 = (good+bad+neutral)
+  const val2 = ((good-bad)/(good+bad+neutral)).toFixed(2)
+  const val3 = ((good)/(good+bad+neutral)*100).toFixed(2) + "%"
+  if ((good+bad+neutral) !== 0) {
     return (
       <div>
-        <Display text="all" value={good+bad+neutral} />
-        <Display text="average" value={(good-bad)/(good+bad+neutral)} />
-        <Display text="positive" value={(good)/(good+bad+neutral)*100 + "%"} />    
+        <Display text="all" value={val1} />
+        <Display text="average" value={val2} />
+        <Display text="positive" value={val3} />    
       </div>
     )
   }
