@@ -13,9 +13,9 @@ const Statistics = ({good, neutral, bad}) => {
   if ((good+bad-neutral) !== 0) {
     return (
       <div>
-        <Display text={"all"} value={good+bad+neutral} />
-        <Display text={"average"} value={(good-bad)/(good+bad+neutral)} />
-        <Display text={"positive"} value={(good)/(good+bad+neutral)*100 + "%"} />    
+        <Display text="all" value={good+bad+neutral} />
+        <Display text="average" value={(good-bad)/(good+bad+neutral)} />
+        <Display text="positive" value={(good)/(good+bad+neutral)*100 + "%"} />    
       </div>
     )
   }
