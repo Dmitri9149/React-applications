@@ -10,3 +10,5 @@ The apps are:
 - anecdotes
 
 Running on localhost:3000
+
+The project is in progress
