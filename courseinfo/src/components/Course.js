@@ -16,9 +16,11 @@ return (
     <div>
         <ul>
             {parts.map(part => 
-                <li style={{display : 'inline-block'}} key={part.id}>
-                    <div> {part.name} </div>  
-                    <div> {part.exercises} </div>
+                <li key={part.id}>
+                    <div style={{display : 'inline-block'}} >
+                    {part.name} {"  "}
+                    {part.exercises} 
+                    </div>
                 </li>)}
         </ul>
     </div>
@@ -26,9 +28,11 @@ return (
 }
 
 const Total = (props) => {
+  const {parts} = props
+  const reducer = (accum,val) => accum + val.exercises
 return (
     <div>
-    {props.parts[0].exercises+props.parts[1].exercises+props.parts[2].exercises}
+    Total of: {parts.reduce(reducer,0)}
     </div>
 )	  
 }
