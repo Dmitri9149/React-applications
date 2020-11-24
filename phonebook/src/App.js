@@ -17,10 +17,18 @@ const App = () => {
       name: newName,
       id: newName
     }
-  
-    setPersons(persons.concat(personObject))
-    setNewName('')
+    if (!existingItem(personObject)) {
+      setPersons(persons.concat(personObject))
+      setNewName('') 
+    } else {
+      window.alert(personObject.name + ' is already added to the book!')
+      setNewName('')
+    }
+
   }
+
+  const existingItem = (item) => persons.find(person => person.id === item.id)
+
 
 
   return (
