@@ -21,7 +21,7 @@ const App = () => {
       setPersons(persons.concat(personObject))
       setNewName('') 
     } else {
-      window.alert(personObject.name + ' is already added to the book!')
+      window.alert(`${personObject.name} is already added to the book!`)
       setNewName('')
     }
 
