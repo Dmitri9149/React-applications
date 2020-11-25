@@ -38,15 +38,14 @@ return (
 }
 
 const Course = (props) => {
-console.log(props)
-const { course } = props
-return (
-    <div>
-    <Header name={course.name} />
-    <Content parts = {course.parts} />
-    <Total parts={course.parts} /> 
-    </div>
-)
+  const { course } = props
+  return (
+      <div>
+        <Header name={course.name} />
+        <Content parts = {course.parts} />
+        <Total parts={course.parts} /> 
+      </div>
+  )
 }
 
 export default Course
