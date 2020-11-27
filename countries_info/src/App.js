@@ -1,9 +1,9 @@
 import React,  { useState, useEffect } from 'react';
 import axios from 'axios'
-import Country from './components/Country'
+{/*import Country from './components/Country' /*}
 {/*import Filter from './components/Filter' */}
 
-const App = () => {
+const App = (props) => {
 
   const [countries, setCountries] = useState([])
   const [filter, setFilter] = useState("")
@@ -22,7 +22,7 @@ const App = () => {
 
   return (
     <>
-    <Country country = {country} />
+{/*    <Country countries = {countries} />  */}
     </>  
   )
 } 
