@@ -19,20 +19,26 @@ const App = () => {
       })
   }, [])
 
-  const countriesToShow = (filter === '')
+  const candidatesToShow = (filter === '')
   ? countries
   : countries.filter(country => country.name.toLowerCase().includes(filter.toLowerCase()))
+
+  const whatToShow = candidatesToShow.length > 1 && candidatesToShow.length <= 10 
+  ? candidatesToShow.map(x => <li>{x.name}</li>)
+  : candidatesToShow.length === 1 ? "Only one country"
+  : "Too many matches, use a more specific filter"
 
   const handleFilter = (event) => setFilter(event.target.value)
 
   return (
     <>
-      <div> find countries which include the subword:{' '} 
+      <div> Find countries which include the subword:{' '} 
       <input val = {filter} onChange = {handleFilter} />
       </div>
-      <ul>
+{/*      <ul>
         {countriesToShow.map(x => <li>{x.name}</li>)}
-      </ul>
+</ul>   */}
+      {whatToShow}
 {/*    <Country countries = {countries} />  */}
     </>  
   )
