@@ -22,6 +22,9 @@ const App = (props) => {
 
   return (
     <>
+      <ul>
+        {countries.map(x => <li>{x.name}</li>)}
+      </ul>
 {/*    <Country countries = {countries} />  */}
     </>  
   )
