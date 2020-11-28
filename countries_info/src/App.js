@@ -6,7 +6,7 @@ import axios from 'axios'
 const App = () => {
 
   const [countries, setCountries] = useState([])
-  const [filter, setFilter] = useState("ar")
+  const [filter, setFilter] = useState('')
   
 
   useEffect(() =>  {
@@ -23,8 +23,13 @@ const App = () => {
   ? countries
   : countries.filter(country => country.name.toLowerCase().includes(filter))
 
+  const handleFilter = (event) => setFilter(event.target.value)
+
   return (
     <>
+      <div> find countries which include the subword:{' '} 
+      <input val = {filter} onChange = {handleFilter} />
+      </div>
       <ul>
         {countriesToShow.map(x => <li>{x.name}</li>)}
       </ul>
