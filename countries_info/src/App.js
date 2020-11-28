@@ -28,7 +28,7 @@ const App = () => {
   candidatesToShow.length > 1 && candidatesToShow.length <= 10 
   ? candidatesToShow.map(x => 
   <li onClick = {() => handleSingleName(x.name)}>
-    <button type = "OnClick">show</button> 
+    <button type = "OnClick">show</button> {'    '}
     {x.name}
   </li>
   )
