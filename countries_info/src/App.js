@@ -26,7 +26,12 @@ const App = () => {
   const whatToShow = candidatesToShow.length === 0
   ? "" : 
   candidatesToShow.length > 1 && candidatesToShow.length <= 10 
-  ? candidatesToShow.map(x => <li>{x.name}</li>)
+  ? candidatesToShow.map(x => 
+  <li onClick = {() => handleSingleName(x.name)}>
+    <button type = "OnClick">show</button> 
+    {x.name}
+  </li>
+  )
   : candidatesToShow.length === 1 
   ? <div> 
       <h2>{candidatesToShow[0].name}</h2>
@@ -34,13 +39,15 @@ const App = () => {
       <p>Population: {'  '} {candidatesToShow[0].population}</p>
       <h3>Languages:</h3>
       <ul>
-       {candidatesToShow[0].languages.map(lang =><li key = {lang.name}> {lang.name}</li>)} 
+       {candidatesToShow[0].languages.map(lang => <li key={lang.name}>{lang.name}</li>)} 
       </ul>
       <img max-width = {250} height = {80} src={candidatesToShow[0].flag} alt="flag" />
     </div>
   : "Too many matches, use a more specific filter"
 
   const handleFilter = (event) => setFilter(event.target.value)
+
+  const handleSingleName = (name) => setFilter(name)
 
   return (
     <>
