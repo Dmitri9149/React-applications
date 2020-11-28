@@ -3,10 +3,10 @@ import axios from 'axios'
 {/*import Country from './components/Country' /*}
 {/*import Filter from './components/Filter' */}
 
-const App = (props) => {
+const App = () => {
 
   const [countries, setCountries] = useState([])
-  const [filter, setFilter] = useState("")
+  const [filter, setFilter] = useState("ar")
   
 
   useEffect(() =>  {
@@ -17,13 +17,16 @@ const App = (props) => {
         console.log('promise fulfilled')
         setCountries(response.data)
       })
-
   }, [])
+
+  const countriesToShow = (filter === '')
+  ? countries
+  : countries.filter(country => country.name.toLowerCase().includes(filter))
 
   return (
     <>
       <ul>
-        {countries.map(x => <li>{x.name}</li>)}
+        {countriesToShow.map(x => <li>{x.name}</li>)}
       </ul>
 {/*    <Country countries = {countries} />  */}
     </>  
