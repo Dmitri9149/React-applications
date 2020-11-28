@@ -23,9 +23,21 @@ const App = () => {
   ? countries
   : countries.filter(country => country.name.toLowerCase().includes(filter.toLowerCase()))
 
-  const whatToShow = candidatesToShow.length > 1 && candidatesToShow.length <= 10 
+  const whatToShow = candidatesToShow.length === 0
+  ? "" : 
+  candidatesToShow.length > 1 && candidatesToShow.length <= 10 
   ? candidatesToShow.map(x => <li>{x.name}</li>)
-  : candidatesToShow.length === 1 ? "Only one country"
+  : candidatesToShow.length === 1 
+  ? <div> 
+      <h2>{candidatesToShow[0].name}</h2>
+      <p>Capital: {'  '} {candidatesToShow[0].capital}</p>
+      <p>Population: {'  '} {candidatesToShow[0].population}</p>
+      <h3>Languages:</h3>
+      <ul>
+       {candidatesToShow[0].languages.map(lang =><li key = {lang.name}> {lang.name}</li>)} 
+      </ul>
+      <img max-width = {250} height = {80} src={candidatesToShow[0].flag} alt="flag" />
+    </div>
   : "Too many matches, use a more specific filter"
 
   const handleFilter = (event) => setFilter(event.target.value)
