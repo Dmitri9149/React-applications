@@ -20,13 +20,13 @@ const App = () => {
       })
   }, [])
 
-  const getWeather = (name) =>  {
+  const getWeather = (capital) =>  {
     console.log('effect weather')
     const url = new URL('http://api.weatherstack.com/current?access_key=""&query=Helsinki')
 {/*    const params = new URLSearchParams(url.search); */}
     console.log('app key', process.env.REACT_APP_WEATHER)
     url.searchParams.set('access_key', process.env.REACT_APP_WEATHER)
-    url.searchParams.set('query' , name.capital)
+    url.searchParams.set('query' , capital)
     console.log('url', url)
     axios
       .get(url)
@@ -44,7 +44,7 @@ const App = () => {
   ? "" : 
   candidatesToShow.length > 1 && candidatesToShow.length <= 10 
   ? candidatesToShow.map(country => 
-  <li key = {country.name} onClick = {() => handleSingleName(country.name)}>
+  <li key = {country.name} onClick = {() => handleSingleName(country)}>
     <button type = "OnClick">show</button> {'    '}
     {country.name}
   </li>
@@ -67,12 +67,12 @@ const App = () => {
 
   const handleFilter = (event) => setFilter(event.target.value)
 
-  const handleSingleName = (name) => {
+  const handleSingleName = (country) => {
     console.log(process.env.REACT_APP_WEATHER)
     console.log("singl")
-    setFilter(name)
+    setFilter(country.name)
     console.log("single weather")
-    getWeather(name)
+    getWeather(country.capital)
   }
 
   return (
