@@ -22,9 +22,12 @@ const App = () => {
 
   const getWeather = (name) =>  {
     console.log('effect weather')
-    const url = new URL('http://api.weatherstack.com/current ? access_key = REACT_APP_WEATHER & query =""')
-    const params = new URLSearchParams(url.search);
-    params.set('query' , name.capital)
+    const url = new URL('http://api.weatherstack.com/current?access_key=""&query=Helsinki')
+{/*    const params = new URLSearchParams(url.search); */}
+    console.log('app key', process.env.REACT_APP_WEATHER)
+    url.searchParams.set('access_key', process.env.REACT_APP_WEATHER)
+    url.searchParams.set('query' , name.capital)
+    console.log('url', url)
     axios
       .get(url)
       .then(response => {
@@ -56,13 +59,19 @@ const App = () => {
        {candidatesToShow[0].languages.map(lang => <li key={lang.name}>{lang.name}</li>)} 
       </ul>
       <img max-width = {250} height = {80} src={candidatesToShow[0].flag} alt="flag" />
+      <p>
+        Temperature feelslike:
+      </p>
     </div>
   : "Too many matches, use a more specific filter"
 
   const handleFilter = (event) => setFilter(event.target.value)
 
   const handleSingleName = (name) => {
+    console.log(process.env.REACT_APP_WEATHER)
+    console.log("singl")
     setFilter(name)
+    console.log("single weather")
     getWeather(name)
   }
 
