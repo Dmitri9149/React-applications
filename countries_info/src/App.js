@@ -7,6 +7,7 @@ const App = () => {
 
   const [countries, setCountries] = useState([])
   const [filter, setFilter] = useState('')
+  const [weather, setWeather] = useState('')
   
 
   useEffect(() =>  {
@@ -19,6 +20,19 @@ const App = () => {
       })
   }, [])
 
+  const getWeather = (name) =>  {
+    console.log('effect weather')
+    const url = new URL('http://api.weatherstack.com/current ? access_key = REACT_APP_WEATHER & query =""')
+    const params = new URLSearchParams(url.search);
+    params.set('query' , name.capital)
+    axios
+      .get(url)
+      .then(response => {
+        console.log('promise weather fulfilled')
+        setWeather(response.data)
+      })
+  }
+
   const candidatesToShow = (filter === '')
   ? countries
   : countries.filter(country => country.name.toLowerCase().includes(filter.toLowerCase()))
@@ -26,10 +40,10 @@ const App = () => {
   const whatToShow = candidatesToShow.length === 0
   ? "" : 
   candidatesToShow.length > 1 && candidatesToShow.length <= 10 
-  ? candidatesToShow.map(x => 
-  <li onClick = {() => handleSingleName(x.name)}>
+  ? candidatesToShow.map(country => 
+  <li key = {country.name} onClick = {() => handleSingleName(country.name)}>
     <button type = "OnClick">show</button> {'    '}
-    {x.name}
+    {country.name}
   </li>
   )
   : candidatesToShow.length === 1 
@@ -47,7 +61,10 @@ const App = () => {
 
   const handleFilter = (event) => setFilter(event.target.value)
 
-  const handleSingleName = (name) => setFilter(name)
+  const handleSingleName = (name) => {
+    setFilter(name)
+    getWeather(name)
+  }
 
   return (
     <>
