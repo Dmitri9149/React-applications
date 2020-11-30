@@ -1,7 +1,7 @@
 import React,  { useState, useEffect } from 'react';
 import axios from 'axios'
 import Country from './components/Country'
-{/*import Filter from './components/Filter' */}
+import Filter from './components/Filter'
 
 const App = () => {
 
@@ -53,9 +53,7 @@ const App = () => {
 
   return (
     <>
-      <div> Find countries which include the subword:{' '} 
-      <input val = {filter} onChange = {handleFilter} />
-      </div>
+      <Filter value = {filter} onChange = {handleFilter} />
       {whatToShow}
     </>  
   )

@@ -4,7 +4,6 @@ import axios from 'axios'
 const Country = ({filter, country}) => {
 
     const [weatherCurrent, setWeatherCurrent]= useState({})
-    const [weatherCondition, setWeatherCondition]= useState({})
 
     console.log("Country effect !!!!!!!!!!")
     const url = new URL('http://api.weatherstack.com/current?access_key=""&query=Helsinki')
@@ -19,7 +18,6 @@ const Country = ({filter, country}) => {
           .then(response => {
             console.log('weather promise fulfilled')
             setWeatherCurrent(response.data.current)
-            setWeatherCondition(response.data)
           })
       }, [])
 
@@ -34,10 +32,10 @@ const Country = ({filter, country}) => {
                 {country.languages.map(lang => <li key={lang.name}>{lang.name}</li>)} 
             </ul>
             <img max-width = {250} height = {80} src={country.flag} alt="flag" />
+            <h2>Weather in {country.capital}</h2>
             <p>
                 Temperature feelslike: {weatherCurrent.feelslike}
             </p>
-            <h2>Weather in {country.capital}</h2>
             <p>
                 <b>
                 temperature :&nbsp; 
