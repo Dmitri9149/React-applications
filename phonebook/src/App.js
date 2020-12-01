@@ -1,9 +1,7 @@
-import Axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
-import axios from 'axios'
 import personService from './services/persons'
 
 const App = () => {
@@ -14,7 +12,7 @@ const App = () => {
 
   useEffect(()=> {
     personService
-      .getAll
+      .getAll()
         .then(persons => setPersons(persons))
   },[])
 
