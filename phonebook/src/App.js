@@ -34,7 +34,10 @@ const App = () => {
       id: newName
     }
     if (!existingItem(personObject)) {
-      setPersons(persons.concat(personObject))
+      personService
+        .create(personObject)
+          .then(returnedPerson => 
+            setPersons(persons.concat(returnedPerson)))
       setNewName('')
       setNewNumber('') 
     } else {
