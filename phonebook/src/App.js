@@ -28,8 +28,7 @@ const App = () => {
     event.preventDefault()
     const personObject = {
       name: newName,
-      number: newNumber,
-      id: newName
+      number: newNumber
     }
     if (!existingItem(personObject)) {
       personService
@@ -53,9 +52,13 @@ const App = () => {
 
   const existingItem = (item) => persons.find(person => person.id === item.id)
 
-  const personsToShow = (newFilter === '')
+{/*  const personsToShow = (newFilter === '')
   ? persons
-  : persons.filter(person => person.name.toLowerCase() === newFilter)
+: persons.filter(person => person.name.toLowerCase() === newFilter.toLowerCase()) */}
+
+const personsToShow =  newFilter === ""
+? persons
+: persons.filter(person => person.name.toLowerCase().startsWith(newFilter.toLowerCase()));
 
 
 
