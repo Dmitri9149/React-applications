@@ -1,25 +1,21 @@
 import React from 'react'
 
 const Persons = ({toShow, onClick}) => (
-    <ul>
-        {toShow.map(person => 
-            <li key ={person.id}> 
-
-
-
-            <tr>
-                <td>
-                    {person.name}
-                 </td>
-                <td>
-                    {person.number}
-                </td>
-                <td>
-                    <button onClick ={onClick}>delete</button>
-                </td>
-            </tr>
-            </li>)}
-    </ul>
+    <tbody>   
+        {toShow.map(person =>  
+                <tr key = {person.name}>
+                    <td>
+                        {person.name}&nbsp;&nbsp;
+                    </td>
+                    <td>
+                        {person.number}&nbsp;&nbsp;
+                    </td>
+                    <td>
+                        <button onClick ={onClick}>delete</button>
+                    </td>
+                </tr>
+            )}
+    </tbody>
 )
 
 export default Persons
