@@ -4,8 +4,20 @@ const Persons = ({toShow, onClick}) => (
     <ul>
         {toShow.map(person => 
             <li key ={person.id}> 
-                {person.name} {'  '} {person.number}
-            <button onClick ={onClick}>delete</button>
+
+
+
+            <tr>
+                <td>
+                    {person.name}
+                 </td>
+                <td>
+                    {person.number}
+                </td>
+                <td>
+                    <button onClick ={onClick}>delete</button>
+                </td>
+            </tr>
             </li>)}
     </ul>
 )
