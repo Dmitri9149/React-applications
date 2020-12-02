@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Persons = ({toShow, onClick}) => (
-    <tbody>   
-        {toShow.map(person =>  
+const Persons = ({toShow, onClick}) =>    
+        toShow.map(person => {
+            return (
+                <table>
+                <tbody key = {person.name}>
                 <tr key = {person.name}>
                     <td>
                         {person.name}&nbsp;&nbsp;
@@ -14,8 +16,10 @@ const Persons = ({toShow, onClick}) => (
                         <button onClick ={onClick}>delete</button>
                     </td>
                 </tr>
-            )}
-    </tbody>
-)
+                </tbody>
+                </table>
+            )
+        })
+
 
 export default Persons
