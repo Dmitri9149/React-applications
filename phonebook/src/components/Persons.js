@@ -1,23 +1,15 @@
 import React from 'react'
+import Person from './Person'
 
-const Persons = ({toShow, onClick}) =>    
+const Persons = ({toShow, onClick}) => 
         toShow.map(person => {
             return (
-                <table>
-                <tbody key = {person.name}>
-                <tr key = {person.name}>
-                    <td>
-                        {person.name}&nbsp;&nbsp;
-                    </td>
-                    <td>
-                        {person.number}&nbsp;&nbsp;
-                    </td>
-                    <td>
-                        <button onClick ={onClick}>delete</button>
-                    </td>
-                </tr>
-                </tbody>
-                </table>
+            <li key = {person.id}>
+            <Person key = {person.id}
+                    person = {person}
+                    onClick = {onClick(person.id)}
+            />
+            </li>
             )
         })
 
