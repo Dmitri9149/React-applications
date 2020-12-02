@@ -17,4 +17,10 @@ const del = (id) => {
 
 }
 
-export default {getAll, create, del}
+const logger = {
+  getAll, 
+  create,
+  del
+}
+
+export default logger
