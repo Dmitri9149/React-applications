@@ -47,12 +47,15 @@ const App = () => {
 
   const deletePerson = (id) => {
     return () => {
-      personService
-        .del(id)
-          .then(data => {
-            const newPersons = persons.filter(person => person.id!==id )
-            setPersons(newPersons)
-          })
+      const person = persons.find(person => person.id === id)
+      if (window.confirm(`Delete  "${person.name}" ?`)) {
+        personService
+          .del(id)
+            .then(data => {
+              const newPersons = persons.filter(person => person.id!==id )
+              setPersons(newPersons)
+            })
+      }
     }
   }
 
