@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Persons = ({toShow}) => (
+const Persons = ({toShow, onClick}) => (
     <ul>
         {toShow.map(person => 
             <li key ={person.id}> 
                 {person.name} {'  '} {person.number}
-            <button type ="submit">delete</button>
+            <button onClick ={onClick}>delete</button>
             </li>)}
     </ul>
 )
