@@ -45,6 +45,15 @@ const App = () => {
 
   }
 
+  const deletePerson = (id) => {
+    personService
+      .del(id)
+        .then(data => {
+          const newPersons = persons.filter(person => !person.id===id )
+          setPersons(newPersons)
+        })
+  }
+
   const handleFilterChange = (event) => {
     console.log(event.target.value)
     setNewFilter(event.target.value)
