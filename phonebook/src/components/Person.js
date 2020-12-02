@@ -6,7 +6,7 @@ const Person = ({ person, onClick }) => {
     <>
         {person.name} &nbsp;&nbsp;
         {person.number} &nbsp;&nbsp;
-        <button onClick={onClick}>poista</button>
+        <button onClick={onClick}>delete</button>
     </>
 
   )
