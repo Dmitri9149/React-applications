@@ -46,12 +46,14 @@ const App = () => {
   }
 
   const deletePerson = (id) => {
-    personService
-      .del(id)
-        .then(data => {
-          const newPersons = persons.filter(person => !person.id===id )
-          setPersons(newPersons)
-        })
+    return () => {
+      personService
+        .del(id)
+          .then(data => {
+            const newPersons = persons.filter(person => person.id!==id )
+            setPersons(newPersons)
+          })
+    }
   }
 
   const handleFilterChange = (event) => {
@@ -61,9 +63,6 @@ const App = () => {
 
   const existingItem = (item) => persons.find(person => person.id === item.id)
 
-{/*  const personsToShow = (newFilter === '')
-  ? persons
-: persons.filter(person => person.name.toLowerCase() === newFilter.toLowerCase()) */}
 
 const personsToShow =  newFilter === ""
 ? persons
@@ -85,7 +84,9 @@ const personsToShow =  newFilter === ""
 
       <h3>Numbers</h3>
 
-      <Persons toShow ={personsToShow} />
+      <Persons toShow ={personsToShow}
+               onClick= {deletePerson} 
+       />
     </div>
   )
 }
