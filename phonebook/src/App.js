@@ -31,7 +31,7 @@ const App = () => {
       number: newNumber
     }
     if (!existingItem(personObject)) {
-      personServicecd 
+      personService 
         .create(personObject)
           .then(returnedPerson => 
             setPersons(persons.concat(returnedPerson)))

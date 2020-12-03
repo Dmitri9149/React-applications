@@ -24,6 +24,16 @@
       "name": "Dmitri",
       "number": "040",
       "id": "Dmitri"
+    },
+    {
+      "name": "Dmitri",
+      "number": "234",
+      "id": 5
+    },
+    {
+      "name": "Arto Hellas",
+      "number": "23",
+      "id": 6
     }
   ]
 }
