@@ -39,7 +39,8 @@ const App = () => {
       setNewName('')
       setNewNumber('') 
     } else {
-      window.confirm(`${personObject.name} is already added to the book!`)
+      const r = window.confirm(`${personObject.name} is already added to the book!`)
+      if (r === true) {
       const changedPerson = { ...existingPerson, number:personObject.number }
       const id = changedPerson.id
       personService
@@ -49,6 +50,11 @@ const App = () => {
               person.id !== id ? person : response)))
       setNewName('')
       setNewNumber('')
+      } else {
+        setNewName('')
+        setNewNumber('')
+
+      }
     }
 
   }
