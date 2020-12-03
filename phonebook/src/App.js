@@ -75,7 +75,7 @@ const App = () => {
               setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 4000)                
             .catch(error => {
               const restorePersons = persons.filter(person => person.id !== id)
-              setPersons(newPersons)
+              setPersons(restorePersons)
               setNotify(
                 {message:`Person ${changedPerson} was already deleted!`, messageClass:"errorDeleted"
               })
