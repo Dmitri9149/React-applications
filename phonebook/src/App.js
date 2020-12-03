@@ -39,7 +39,7 @@ const App = () => {
       setNewName('')
       setNewNumber('') 
     } else {
-      window.alert(`${personObject.name} is already added to the book!`)
+      window.confirm(`${personObject.name} is already added to the book!`)
       personService
         .update(personObject.id, personObject)
           .then(returnedPerson => 
