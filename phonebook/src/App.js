@@ -70,7 +70,7 @@ const App = () => {
                 setPersons(persons.map(person => 
                   person.id !== id ? person : response)))
                   setNotify(
-                    {message:`Added ${changedPerson.name}`, messageClass:'personUpdate'}
+                    {message:`Added ${changedPerson.name} data are updated`, messageClass:'personUpdate'}
                   )
                   setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 5000)                
           setNewName('')
