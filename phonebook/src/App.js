@@ -50,6 +50,10 @@ const App = () => {
         .create(personObject)
           .then(returnedPerson => 
             setPersons(persons.concat(returnedPerson)))
+            setNotify(
+              {message:`Added ${personObject.name}`, messageClass:'personAdd'}
+            )
+            setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 1000)
       setNewName('')
       setNewNumber('') 
     } else {
