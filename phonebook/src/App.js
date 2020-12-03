@@ -39,17 +39,19 @@ const App = () => {
       setNewName('')
       setNewNumber('') 
     } else {
-      const r = window.confirm(`${personObject.name} is already added to the book!`)
-      if (r === true) {
-      const changedPerson = { ...existingPerson, number:personObject.number }
-      const id = changedPerson.id
-      personService
-        .update(id, changedPerson)
-          .then(response => 
-            setPersons(persons.map(person => 
-              person.id !== id ? person : response)))
-      setNewName('')
-      setNewNumber('')
+        const name = personObject.name
+        const warning = `${name} is already added to the book! Replace the old 
+          number with the new one?`
+        if (window.confirm(warning)) {
+        const changedPerson = { ...existingPerson, number:personObject.number }
+        const id = changedPerson.id
+        personService
+          .update(id, changedPerson)
+            .then(response => 
+              setPersons(persons.map(person => 
+                person.id !== id ? person : response)))
+        setNewName('')
+        setNewNumber('')
       } else {
         setNewName('')
         setNewNumber('')
