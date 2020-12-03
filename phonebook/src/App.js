@@ -4,11 +4,25 @@ import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
 import personService from './services/persons'
 
+const Notifiction = ({message, messageClass}) => {
+  if (message = '') {
+    return null
+  }
+  return (
+    <div className = {messageClass}>
+      {message}
+    </div>
+  )
+
+
+}
+
 const App = () => {
   const [ persons, setPersons ] = useState([])
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
   const [ newFilter, setNewFilter ] = useState('')
+  const [notify, setNotify]= useState({message:'show some test', messageClass:'nothing'})
 
   useEffect(()=> {
     personService
