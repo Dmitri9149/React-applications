@@ -66,13 +66,23 @@ const App = () => {
           const id = changedPerson.id
           personService
             .update(id, changedPerson)
-              .then(response => 
-                setPersons(persons.map(person => 
-                  person.id !== id ? person : response)))
-                  setNotify(
-                    {message:`${changedPerson.name} data are updated`, messageClass:'personUpdate'}
-                  )
-                  setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 4000)                
+            .then(response => 
+              setPersons(persons.map(person => 
+                person.id !== id ? person : response)))
+              setNotify(
+                {message:`${changedPerson.name} data are updated`, messageClass:'personUpdate'}
+              )
+              setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 4000)                
+            .catch(error => {
+              const restorePersons = persons.filter(person => person.id !== id)
+              setPersons(newPersons)
+              setNotify(
+                {message:`Person ${changedPerson} was already deleted!`, messageClass:"errorDeleted"
+              })
+              setTimeout(() => {
+                setNotify({message:"", messageClass:"nothing"})
+              }, 1000)
+            })
           setNewName('')
           setNewNumber('')
       } else {
