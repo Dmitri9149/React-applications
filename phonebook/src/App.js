@@ -53,7 +53,7 @@ const App = () => {
             setNotify(
               {message:`Added ${personObject.name}`, messageClass:'personAdd'}
             )
-            setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 1000)
+            setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 5000)
       setNewName('')
       setNewNumber('') 
     } else {
@@ -61,18 +61,23 @@ const App = () => {
         const warning = `${name} is already added to the book! Replace the old 
           number with the new one?`
         if (window.confirm(warning)) {
-        const changedPerson = { ...existingPerson, number:personObject.number }
-        const id = changedPerson.id
-        personService
-          .update(id, changedPerson)
-            .then(response => 
-              setPersons(persons.map(person => 
-                person.id !== id ? person : response)))
-        setNewName('')
-        setNewNumber('')
+            
+          const changedPerson = { ...existingPerson, number:personObject.number }
+          const id = changedPerson.id
+          personService
+            .update(id, changedPerson)
+              .then(response => 
+                setPersons(persons.map(person => 
+                  person.id !== id ? person : response)))
+                  setNotify(
+                    {message:`Added ${changedPerson.name}`, messageClass:'personAdd'}
+                  )
+                  setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 5000)                
+          setNewName('')
+          setNewNumber('')
       } else {
-        setNewName('')
-        setNewNumber('')
+          setNewName('')
+          setNewNumber('')
 
       }
     }
