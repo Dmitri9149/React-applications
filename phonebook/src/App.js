@@ -28,7 +28,8 @@ const App = () => {
     event.preventDefault()
     const personObject = {
       name: newName,
-      number: newNumber
+      number: newNumber,
+      id: newName
     }
     if (!existingItem(personObject)) {
       personService 
