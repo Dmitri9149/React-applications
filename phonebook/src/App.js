@@ -22,7 +22,7 @@ const App = () => {
   const [ newName, setNewName ] = useState('')
   const [ newNumber, setNewNumber ] = useState('')
   const [ newFilter, setNewFilter ] = useState('')
-  const [notify, setNotify]= useState({message:'show some test', messageClass:'nothing'})
+  const [notify, setNotify]= useState({message:'', messageClass:'nothing'})
 
   useEffect(()=> {
     personService
