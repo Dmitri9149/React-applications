@@ -53,7 +53,7 @@ const App = () => {
             setNotify(
               {message:`Added ${personObject.name}`, messageClass:'personAdd'}
             )
-            setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 5000)
+            setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 4000)
       setNewName('')
       setNewNumber('') 
     } else {
@@ -70,9 +70,9 @@ const App = () => {
                 setPersons(persons.map(person => 
                   person.id !== id ? person : response)))
                   setNotify(
-                    {message:`Added ${changedPerson.name} data are updated`, messageClass:'personUpdate'}
+                    {message:`${changedPerson.name} data are updated`, messageClass:'personUpdate'}
                   )
-                  setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 5000)                
+                  setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 4000)                
           setNewName('')
           setNewNumber('')
       } else {
