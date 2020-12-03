@@ -4,8 +4,8 @@ import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
 import personService from './services/persons'
 
-const Notifiction = ({message, messageClass}) => {
-  if (message = '') {
+const Notification = ({message, messageClass}) => {
+  if (message === '') {
     return null
   }
   return (
@@ -110,6 +110,10 @@ const personsToShow =  newFilter === ""
   return (
     <div>
       <h2>Phoneebook</h2>
+      <Notification 
+        message = {notify.message}
+        messageClass = {notify.messageClass}
+      />
 
       <Filter value = {newFilter} onChange = {handleFilterChange}/>
 
