@@ -66,13 +66,10 @@ const App = () => {
           const id = changedPerson.id
           personService
             .update(id, changedPerson)
-            .then(response => 
+            .then(response => {
               setPersons(persons.map(person => 
-                person.id !== id ? person : response)))
-              setNotify(
-                {message:`${changedPerson.name} data are updated`, messageClass:'personUpdate'}
-              )
-              setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 4000)                
+                person.id !== id ? person : response))
+            })
             .catch(error => {
               const restorePersons = persons.filter(person => person.id !== id)
               setPersons(restorePersons)
@@ -82,14 +79,18 @@ const App = () => {
               setTimeout(() => {
                 setNotify({message:"", messageClass:"nothing"})
               }, 1000)
-            })
-          setNewName('')
-          setNewNumber('')
-      } else {
-          setNewName('')
-          setNewNumber('')
+            })              
+            setNotify(
+              {message:`${changedPerson.name} data are updated`, messageClass:'personUpdate'}
+            )
+            setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 4000)
+            setNewName('')
+            setNewNumber('')                
+        } else {
+            setNewName('')
+            setNewNumber('')
 
-      }
+        }
     }
 
   }
