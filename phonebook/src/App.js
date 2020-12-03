@@ -31,7 +31,7 @@ const App = () => {
       number: newNumber
     }
     if (!existingItem(personObject)) {
-      personService
+      personServicecd 
         .create(personObject)
           .then(returnedPerson => 
             setPersons(persons.concat(returnedPerson)))
@@ -39,6 +39,10 @@ const App = () => {
       setNewNumber('') 
     } else {
       window.alert(`${personObject.name} is already added to the book!`)
+      personService
+        .update(personObject.id, personObject)
+          .then(returnedPerson => 
+            setPersons(persons.concat(returnedPerson)))
       setNewName('')
       setNewNumber('')
     }
