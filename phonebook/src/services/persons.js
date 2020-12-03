@@ -17,10 +17,16 @@ const del = (id) => {
 
 }
 
+const update = (id ) => {
+  const request = axios.put(`${baseUrl}/${id}`, newObject)
+  return request.then(response => response.data)
+}
+
 const logger = {
   getAll, 
   create,
-  del
+  del,
+  update
 }
 
 export default logger
