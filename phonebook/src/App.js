@@ -28,10 +28,10 @@ const App = () => {
     event.preventDefault()
     const personObject = {
       name: newName,
-      number: newNumber,
-      id: newName
+      number: newNumber
     }
-    if (!existingItem(personObject)) {
+    const existingPerson = existingItem(personObject)
+    if (!existingPerson) {
       personService 
         .create(personObject)
           .then(returnedPerson => 
@@ -40,10 +40,13 @@ const App = () => {
       setNewNumber('') 
     } else {
       window.confirm(`${personObject.name} is already added to the book!`)
+      const changedPerson = { ...existingPerson, number:personObject.number }
+      const id = changedPerson.id
       personService
-        .update(personObject.id, personObject)
-          .then(returnedPerson => 
-            setPersons(persons.concat(returnedPerson)))
+        .update(id, changedPerson)
+          .then(response => 
+            setPersons(persons.map(person => 
+              person.id !== id ? person : response)))
       setNewName('')
       setNewNumber('')
     }
@@ -69,7 +72,7 @@ const App = () => {
     setNewFilter(event.target.value)
   }
 
-  const existingItem = (item) => persons.find(person => person.id === item.id)
+  const existingItem = (item) => persons.find(person => person.name === item.name)
 
 
 const personsToShow =  newFilter === ""
