@@ -63,7 +63,7 @@ const App = () => {
         if (window.confirm(warning)) {
             
           const changedPerson = { ...existingPerson, number:personObject.number }
-          const id = changedPerson.id
+          const id = existingPerson.id
           personService
             .update(id, changedPerson)
             .then(response => {
@@ -74,12 +74,13 @@ const App = () => {
               const restorePersons = persons.filter(person => person.id !== id)
               setPersons(restorePersons)
               setNotify(
-                {message:`Person ${changedPerson} was already deleted!`, messageClass:"errorDeleted"
+                {message:`Person ${changedPerson.name} was already deleted!`, messageClass:"errorDeleted"
               })
               setTimeout(() => {
                 setNotify({message:"", messageClass:"nothing"})
-              }, 1000)
-            })              
+              }, 5000)
+            }) 
+
             setNotify(
               {message:`${changedPerson.name} data are updated`, messageClass:'personUpdate'}
             )
