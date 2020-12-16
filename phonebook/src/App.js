@@ -106,6 +106,12 @@ const App = () => {
               const newPersons = persons.filter(person => person.id!==id )
               setPersons(newPersons)
             })
+            setNotify(
+              {message:`${person.name} data are deleted`, messageClass:'personDelete'}
+            )
+            setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 4000)
+            setNewName('')
+            setNewNumber('') 
       }
     }
   }
