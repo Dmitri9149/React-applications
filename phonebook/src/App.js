@@ -58,7 +58,7 @@ const App = () => {
           .catch (error => {
             console.log(error.response.data)
             setNotify(
-              {message:error.response.data, messageClass:"validationError"
+              {message:error.response.data.error, messageClass:"validationError"
             }) 
           })    
     } else {
