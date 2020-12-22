@@ -1,24 +1,16 @@
 # Phonebook React App
 
 
-## Available Scripts
+The app is configured to work with the server: 
+https://github.com/Dmitri9149/Fullstack_React_Application
 
-In the project directory, you can run:
+The production version may be produced by : 
+```npm run build
+```
+and 'build' folder is to be copied to the build folder of the 
+above mentioned server for front..backend integration. 
 
-### `npm start`
+The he server it be start by 'npm run dev' and will work on 
+http://localhost:3001). Print 'npm start' from root of the app. The app is congigured as proxy:   
+If the React code does an HTTP request to a server address at http://localhost:3000 not managed by the React application itself (i.e. when requests are not about fetching the CSS or JavaScript of the application), the request will be redirected to the server at http://localhost:3001. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3001/api/persons](http://localhost:3001/api/persons) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-The project is in development and will be used with server from : 
-https://github.com/Dmitri9149/Fullstack_React_Application   
-
-The fullstack will be placed to Heroku. 
-
-The fullstack of the front..backend will be Dockerized and used with automatic deployments to DockerHub
-
-The target is to develop components of FullStack application (frontend + backend) and test different configurations of deployment to web (Heroku and DockerHub) and AUTOMATICAL  deployment to (Heroku and DockerHub) (Docker Compose, Docker inside Docker techniques, 
-GitHub Actions and CircleCI tools).
