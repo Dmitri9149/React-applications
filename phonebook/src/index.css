@@ -17,6 +17,12 @@
 
 }
 
+.validationError {
+  background-color: rgb(231, 122, 49);
+  padding: 11px;
+  margin-bottom: 12px
+}
+
 .personDelete {
   background-color: rgb(204, 5, 15);
   padding: 11px;
