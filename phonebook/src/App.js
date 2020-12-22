@@ -36,6 +36,12 @@ const App = () => {
     console.log(event.target.value)
     setNewNumber(event.target.value)
   }
+
+  const timeout = (timeout) => {
+    setTimeout(() => setNotify({message:'', messageClass:'nothing'}), timeout)
+    setNewName('')
+    setNewNumber('')
+  } 
   const addName = (event) => {
     event.preventDefault()
     const personObject = {
@@ -60,9 +66,7 @@ const App = () => {
             setNotify(
               {message:error.response.data.error, messageClass:"validationError"
             })
-            setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 4000)
-            setNewName('')
-            setNewNumber('') 
+            timeout(4000)
           })    
     } else {
         const name = personObject.name
