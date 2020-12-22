@@ -37,7 +37,7 @@ const App = () => {
     setNewNumber(event.target.value)
   }
 
-  const timeout = (timeout) => {
+  const timeoutAndRestore = (timeout) => {
     setTimeout(() => setNotify({message:'', messageClass:'nothing'}), timeout)
     setNewName('')
     setNewNumber('')
@@ -57,14 +57,14 @@ const App = () => {
             setNotify(
               {message:`Added ${personObject.name}`, messageClass:'personAdd'}
             )
-            timeout(4000)  
+            timeoutAndRestore(4000)  
           })
           .catch (error => {
             console.log(error.response.data)
             setNotify(
               {message:error.response.data.error, messageClass:"validationError"
             })
-            timeout(4000)
+            timeoutAndRestore(4000)
           })    
     } else {
         const name = personObject.name
@@ -79,6 +79,10 @@ const App = () => {
             .then(response => {
               setPersons(persons.map(person => 
                 person.id !== id ? person : response))
+              setNotify(
+                {message:`${changedPerson.name} data are updated`, messageClass:'personUpdate'}
+                )
+              timeoutAndRestore(4000)
             })
             .catch(error => {
               const restorePersons = persons.filter(person => person.id !== id)
@@ -86,13 +90,8 @@ const App = () => {
               setNotify(
                 {message:`Person ${changedPerson.name} was already deleted!`, messageClass:"errorDeleted"
               })
-              timeout(4000)
-            }) 
-
-            setNotify(
-              {message:`${changedPerson.name} data are updated`, messageClass:'personUpdate'}
-            )
-            timeout(4000)               
+              timeoutAndRestore(4000)
+            })                
         } else {
             setNewName('')
             setNewNumber('')
@@ -115,9 +114,7 @@ const App = () => {
             setNotify(
               {message:`${person.name} data are deleted`, messageClass:'personDelete'}
             )
-            setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 4000)
-            setNewName('')
-            setNewNumber('') 
+            timeoutAndRestore(4000)  
       }
     }
   }
