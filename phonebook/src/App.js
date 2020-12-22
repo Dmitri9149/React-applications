@@ -59,7 +59,10 @@ const App = () => {
             console.log(error.response.data)
             setNotify(
               {message:error.response.data.error, messageClass:"validationError"
-            }) 
+            })
+            setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 4000)
+            setNewName('')
+            setNewNumber('') 
           })    
     } else {
         const name = personObject.name
