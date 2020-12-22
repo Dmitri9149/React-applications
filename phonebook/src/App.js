@@ -13,8 +13,6 @@ const Notification = ({message, messageClass}) => {
       {message}
     </div>
   )
-
-
 }
 
 const App = () => {
@@ -48,17 +46,21 @@ const App = () => {
     if (!existingPerson) {
       personService 
         .create(personObject)
-          .then(returnedPerson => 
-            setPersons(persons.concat(returnedPerson)))
+          .then(returnedPerson => {
+            setPersons(persons.concat(returnedPerson))
             setNotify(
               {message:`Added ${personObject.name}`, messageClass:'personAdd'}
             )
             setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 4000)
             setNewName('')
-            setNewNumber('') 
+            setNewNumber('')
+          })
           .catch (error => {
             console.log(error.responce.data)
-      })    
+            setNotify(
+              {message:error.response.data.error, messageClass:"validationError"
+            }) 
+          })    
     } else {
         const name = personObject.name
         const warning = `${name} is already added to the book! Replace the old 
