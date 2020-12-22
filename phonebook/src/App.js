@@ -57,9 +57,7 @@ const App = () => {
             setNotify(
               {message:`Added ${personObject.name}`, messageClass:'personAdd'}
             )
-            setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 4000)
-            setNewName('')
-            setNewNumber('')
+            timeout(4000)  
           })
           .catch (error => {
             console.log(error.response.data)
@@ -88,17 +86,13 @@ const App = () => {
               setNotify(
                 {message:`Person ${changedPerson.name} was already deleted!`, messageClass:"errorDeleted"
               })
-              setTimeout(() => {
-                setNotify({message:"", messageClass:"nothing"})
-              }, 5000)
+              timeout(4000)
             }) 
 
             setNotify(
               {message:`${changedPerson.name} data are updated`, messageClass:'personUpdate'}
             )
-            setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 4000)
-            setNewName('')
-            setNewNumber('')                
+            timeout(4000)               
         } else {
             setNewName('')
             setNewNumber('')
