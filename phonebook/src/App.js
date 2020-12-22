@@ -54,11 +54,11 @@ const App = () => {
               {message:`Added ${personObject.name}`, messageClass:'personAdd'}
             )
             setTimeout(() => setNotify({message:'', messageClass:'nothing'}), 4000)
-            .catch (error => {
-              console.log(error.responce.data)
-            })
-      setNewName('')
-      setNewNumber('') 
+            setNewName('')
+            setNewNumber('') 
+          .catch (error => {
+            console.log(error.responce.data)
+      })    
     } else {
         const name = personObject.name
         const warning = `${name} is already added to the book! Replace the old 
